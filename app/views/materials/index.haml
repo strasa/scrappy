@@ -1,0 +1,8 @@
+
+%ul
+  - @materials.each do |material|
+    %li{id:"material_#{material.id}"}
+      %span=material.name
+      = form_for material do |f|
+        = f.text_field :price, value: number_with_precision(f.object.price, precision:2)
+        = f.submit 'Update'

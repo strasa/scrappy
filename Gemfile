@@ -30,7 +30,7 @@ gem 'haml-rails'
 gem 'devise'
 # Use bourbon to provide CSS support
 gem 'bourbon'
-# Use neat for a weet grid layout for bourbon 
+# Use neat for a weet grid layout for bourbon
 gem 'neat'
 # Use fontawesome for icons
 gem 'font-awesome-rails'
@@ -66,5 +66,9 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  # Adding pry as an advanced irb replacement
+  gem 'pry-rails'
+  gem 'pry-doc'
 end
 

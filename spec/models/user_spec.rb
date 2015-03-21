@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+
+  it 'has an admin flag' do
+    user = User.new
+    user.admin = true
+    expect(user.admin?).to be true
+  end
+
 end
