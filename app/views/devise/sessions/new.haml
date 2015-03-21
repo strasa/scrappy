@@ -1,7 +1,7 @@
 = render partial:'nav'
 
 %h2 Log in
-%fieldset#login-fieldset
+%fieldset.devise-fieldset
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .field
       = f.label :email
@@ -17,4 +17,4 @@
         = f.label :remember_me
     .actions
       = f.submit "Log in"
-  = render "devise/shared/links"
+      = render "devise/shared/links"
