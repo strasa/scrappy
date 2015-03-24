@@ -9,3 +9,9 @@ Scenario: Successful Admin Material Price Update
     When I go to the Change Material Price Page
     And I update the price of Copper
     Then I should see that updated price on the Materials Page
+
+Scenario: Non-admins Cannot Update
+    Given I am a regular user
+    And I am logged in
+    When I go to the Change Material Price Page
+    I should get a no page error
