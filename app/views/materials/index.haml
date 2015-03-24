@@ -1,8 +1,30 @@
+=render partial:"nav"
 
-%ul
-  - @materials.each do |material|
-    %li{id:"material_#{material.id}"}
-      %span=material.name
+.materials-container
+  %table.table-minimal
+    %tr
+      %th Material Name
+      %th Price
+      %th Action
+    - @materials.each do |material|
       = form_for material do |f|
-        = f.text_field :price, value: number_with_precision(f.object.price, precision:2)
-        = f.submit 'Update'
+        %tr{id:"material_#{material.id}"}
+          %td= material.name
+          %td= f.text_field :price, value: number_with_precision(f.object.price, precision:2)
+          %td= f.submit 'Update'
+
+.modal
+  %label{:for => "modal-1"}
+    .modal-trigger Add New Material
+  %input#modal-1.modal-state{:type => "checkbox"}/
+  .modal-fade-screen
+    .modal-inner
+      %label.modal-close{:for => "modal-1"}
+      %h1 Add New Material
+      %p.modal-intro Instructions go here.
+      = form_for Material.new do |f|
+        = f.label :name
+        = f.text_field  :name
+        = f.label :price
+        = f.text_field :price
+        = f.submit 'Create'

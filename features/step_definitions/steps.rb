@@ -16,7 +16,7 @@ end
 
 When(/^I update the price of Copper$/) do
   @copper = Material.where(name:'Copper').first
-  within(:css, "li[id=material_#{@copper.id}]") do
+  within(:css, "tr[id=material_#{@copper.id}]") do
     fill_in 'material[price]', with: '2.00'
     click_on 'Update'
   end
