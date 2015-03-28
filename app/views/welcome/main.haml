@@ -15,6 +15,9 @@
     = link_to 'Log In',  new_user_session_path, id: 'show-login'
 
 .content
-  Welcome aboard you scrappy monkey!
-  .project_list
-    %h2 Here would be a list of projects if they existed yet. But they don't. So sad.
+  .project_list.grid-items
+    - @projects.each do |p|
+      %a.grid-item{href: 'javascript:void(0)', name: "project_#{p.id}"}
+        %h1= p.name
+        %p= p.description
+        %p= p.created_at.strftime('%m/%d/%y')

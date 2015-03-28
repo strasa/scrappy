@@ -14,7 +14,13 @@ Given(/^I am a regular user$/) do
   @user = create :user
 end
 
+Given(/^I have a Project$/) do
+  @project = Project.create(name:'Test Project', description:'Test Description', user:@user)
+end
+
 When(/^I go to the Change Material Price Page$/) do
+  # add at least one guaranteed element to the page - this should be in the seed
+  @copper = Material.where(name:'Copper').first_or_create
   visit materials_path
 end
 
@@ -23,11 +29,14 @@ When(/^I go to the Main Page$/) do
 end
 
 When(/^I update the price of Copper$/) do
-  @copper = Material.where(name:'Copper').first
   within(:css, "tr[id=material_#{@copper.id}]") do
     fill_in 'material[price]', with: '2.00'
     click_on 'Update'
   end
+end
+
+When(/^I create a Project$/) do
+    pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I should see that updated price on the Materials Page$/) do
@@ -50,4 +59,9 @@ end
 
 Then(/^I should not see the Change Material Price Link$/) do
   expect(page).to_not have_selector(:link, 'Change Material Prices')
+end
+
+Then(/^I should see that Project$/) do
+  visit main_path
+  expect(page).to have_content(@project.name)
 end
