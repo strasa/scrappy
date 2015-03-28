@@ -1,20 +1,17 @@
 class MaterialsController < ApplicationController
   respond_to :html
+  load_and_authorize_resource
 
   def index
-    authorize! :read, Material
-    @materials = Material.all
   end
 
   def update
-    material = Material.find(params[:id])
-    material.price = params[:material][:price]
-    material.save
-    respond_with material, location: materials_path
+    @material.price = params[:material][:price]
+    @material.save
+    respond_with @material, location: materials_path
   end
 
   def create
-    material = Material.create(name: params[:material][:name], price: params[:material][:price])
-    respond_with material, location: materials_path
+    respond_with @material, location: materials_path
   end
 end
