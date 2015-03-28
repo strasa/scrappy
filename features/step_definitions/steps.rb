@@ -36,7 +36,11 @@ When(/^I update the price of Copper$/) do
 end
 
 When(/^I create a Project$/) do
-    pending # express the regexp above with the code you wish you had
+  visit main_path
+  find(:css, ".modal-trigger").click
+  fill_in 'project[name]', with: 'Test Project'
+  fill_in 'project[description]', with: 'Test Project Description'
+  click_on 'Create'
 end
 
 Then(/^I should see that updated price on the Materials Page$/) do
@@ -63,5 +67,5 @@ end
 
 Then(/^I should see that Project$/) do
   visit main_path
-  expect(page).to have_content(@project.name)
+  expect(page).to have_content('Test Project')
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'welcome#main', as: :main
     resources :materials, only: [:index, :update, :create]
+    resources :projects, only: [:index, :update, :create]
   end
 
   unauthenticated :user do

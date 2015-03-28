@@ -1,11 +1,11 @@
+=render partial:"nav"
+
 .links
   - if can? :create, Material
     = link_to 'Change Material Prices', materials_path
     %br
 
   - if current_user
-    = link_to 'Start a New Project', '#'
-    %br
     = link_to 'Add Some Pictures', '#'
     %br
     = link_to 'Log Out' , destroy_user_session_path, method: :delete
@@ -13,6 +13,14 @@
       %br
   - else
     = link_to 'Log In',  new_user_session_path, id: 'show-login'
+
+=modal_for('Add New Project', '') do
+  = form_for Project.new do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.label :description
+    = f.text_field :description
+    = f.submit 'Create'
 
 .content
   .project_list.grid-items
