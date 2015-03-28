@@ -1,0 +1,10 @@
+.modal
+  %label{:for => "modal-1"}
+    .modal-trigger= heading
+  %input#modal-1.modal-state{:type => "checkbox"}/
+  .modal-fade-screen
+    .modal-inner
+      %label.modal-close{:for => "modal-1"}
+      %h1= heading
+      %p.modal-intro= intro
+      = capture(&block)
