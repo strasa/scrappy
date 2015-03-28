@@ -39,7 +39,9 @@ Then(/^I should see that updated price on the Materials Page$/) do
 end
 
 Then(/^I should get a no page error$/) do
-  expect(page.status_code).to eq(500)
+  # make sure the CanCan redirect is working
+  expect(page.status_code).to eq(200)
+  expect(page).to have_content('You are not authorized to access this page.')
 end
 
 Then(/^I should see the Change Material Price Link$/) do
