@@ -24,10 +24,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use puma as the app server
 gem 'puma'
-# Use HAML instead of ERB for HTML generation
-gem 'haml-rails'
 # Use devise for authentication
 gem 'devise'
+# Use cancancan for authorization
+gem 'cancancan'
+
+# STYLIN'
+# Use HAML instead of ERB for HTML generation
+gem 'haml-rails'
 # Use bourbon to provide CSS support
 gem 'bourbon'
 # Use neat for a weet grid layout for bourbon
@@ -54,6 +58,9 @@ group :development, :test do
 
   # database_cleaner is required by cucumber and truncates test data between tests
   gem 'database_cleaner'
+
+  # use factory_girl to extract common fixtures from tests
+  gem 'factory_girl_rails'
 
   # Unit testing with RSpec
   gem 'rspec-rails'

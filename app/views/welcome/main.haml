@@ -1,6 +1,5 @@
 .links
-  -# @TODO: this should test for admin and show the link if so.
-  - if current_user
+  - if can? :create, Material
     = link_to 'Change Material Prices', materials_path
     %br
 
@@ -15,7 +14,7 @@
   - else
     = link_to 'Log In',  new_user_session_path, id: 'show-login'
 
-.content 
+.content
   Welcome aboard you scrappy monkey!
   .project_list
     %h2 Here would be a list of projects if they existed yet. But they don't. So sad.

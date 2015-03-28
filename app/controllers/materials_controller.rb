@@ -2,6 +2,7 @@ class MaterialsController < ApplicationController
   respond_to :html
 
   def index
+    authorize! :read, Material
     @materials = Material.all
   end
 
