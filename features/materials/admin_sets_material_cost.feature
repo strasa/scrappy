@@ -27,3 +27,10 @@ Feature: Admin adds material cost
     And I am logged in
     When I go to the Main Page
     Then I should not see the Change Material Price Link
+
+  Scenario: Create a new material
+    Given I am an Admin
+    And I am logged in
+    When I go to the Change Material Price Page
+    And I create the material 'Silver'
+    Then I should see that updated price on the Materials Page
